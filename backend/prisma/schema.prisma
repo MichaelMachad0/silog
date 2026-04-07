@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Motorista {
+  id       Int     @id @default(autoincrement())
+  nome     String
+  cpf      String  @unique
+  telefone String?
+  rntrc    String?
+  status   String  @default("ATIVO")
+
+  veiculos Veiculo[]
+  cargas   Carga[]
+}
+
+model Veiculo {
+  id          Int       @id @default(autoincrement())
+  placa       String    @unique
+  tipo        String
+  carroceria  String
+  motoristaId Int
+  motorista   Motorista @relation(fields: [motoristaId], references: [id])
+}
+
+model Carga {
+  id         Int      @id @default(autoincrement())
+  origem     String
+  destino    String
+  peso       Float
+  valorFrete Float
+  status     String   @default("PENDENTE")
+  createdAt  DateTime @default(now())
+
+  motoristaId Int?
+  motorista   Motorista? @relation(fields: [motoristaId], references: [id])
+
+  frete Frete?
+}
+
+model Frete {
+  id             Int   @id @default(autoincrement())
+  cargaId        Int   @unique
+  valorEmpresa   Float
+  valorMotorista Float
+  margem         Float
+
+  carga Carga @relation(fields: [cargaId], references: [id])
+}
