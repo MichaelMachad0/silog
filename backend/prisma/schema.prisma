@@ -40,7 +40,8 @@ model Carga {
   motoristaId Int?
   motorista   Motorista? @relation(fields: [motoristaId], references: [id])
 
-  frete Frete?
+  frete    Frete?
+  entregas Entrega[]
 }
 
 model Frete {
@@ -51,4 +52,14 @@ model Frete {
   margem         Float
 
   carga Carga @relation(fields: [cargaId], references: [id])
+}
+
+model Entrega {
+  id     Int    @id @default(autoincrement())
+  cidade String
+  estado String
+  peso   Float
+
+  cargaId Int
+  carga   Carga @relation(fields: [cargaId], references: [id])
 }

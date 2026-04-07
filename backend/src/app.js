@@ -1,16 +1,30 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const { PrismaClient } = require("@prisma/client");
 
 const app = express();
-const prisma = new PrismaClient();
 
 app.use(cors());
 app.use(express.json());
 
+// ROTAS
+const motoristasRoutes = require("./routes/motoristas.routes");
+const cargasRoutes = require("./routes/cargas.routes");
+const clientesRoutes = require("./routes/clientes.routes");
+const veiculosRoutes = require("./routes/veiculos.routes");
+
+app.use("/motoristas", motoristasRoutes);
+app.use("/cargas", cargasRoutes);
+app.use("/clientes", clientesRoutes);
+app.use("/veiculos", veiculosRoutes);
+
+// TESTE
 app.get("/", (req, res) => {
   res.send("SILOG API online");
+});
+
+app.listen(3001, () => {
+  console.log("SILOG API rodando em http://localhost:3001");
 });
 
 // criar motorista
