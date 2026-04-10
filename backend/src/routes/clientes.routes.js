@@ -1,7 +1,8 @@
-const cargasRoutes = require("./routes/cargas.routes");
-const clientesRoutes = require("./routes/clientes.routes");
-const veiculosRoutes = require("./routes/veiculos.routes");
+const express = require("express");
+const router = express.Router();
 
-app.use("/cargas", cargasRoutes);
-app.use("/clientes", clientesRoutes);
-app.use("/veiculos", veiculosRoutes);
+router.get("/", (req, res) => {
+  res.json({ mensagem: "Clientes OK" });
+});
+
+module.exports = router;

@@ -63,3 +63,12 @@ model Entrega {
   cargaId Int
   carga   Carga @relation(fields: [cargaId], references: [id])
 }
+
+model TabelaFrete {
+  id                 String @id @default(uuid())
+  origem             String
+  destino            String
+  tipoVeiculo        String
+  valorMotoristaBase Float
+  pedagio            Float?
+}
