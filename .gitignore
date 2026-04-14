@@ -1,6 +1,13 @@
 node_modules
+<<<<<<< HEAD
 .next
 .env
 backend/.env
 backend/dev.db
 backend/node_modules
+=======
+# Keep environment variables out of version control
+.env
+
+/generated/prisma
+>>>>>>> cd4f22c (estrutura inicial backend SILOG)
