@@ -1,3 +1,4 @@
+const prisma = require("../prisma/client");
 const motoristaService = require("../services/motoristaService");
 
 async function criarMotorista(req, res) {
@@ -9,6 +10,19 @@ async function criarMotorista(req, res) {
   }
 }
 
+async function listarMotoristas(req, res) {
+  try {
+    const motoristas = await prisma.motorista.findMany({
+      orderBy: { createdAt: "desc" }
+    });
+
+    return res.json(motoristas);
+  } catch (error) {
+    return res.status(500).json({ erro: error.message });
+  }
+}
+
 module.exports = {
-  criarMotorista
+  criarMotorista,
+  listarMotoristas
 };
