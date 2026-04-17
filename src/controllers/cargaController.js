@@ -9,14 +9,12 @@ async function criarCarga(req, res) {
       erro: null,
     });
   } catch (error) {
-    const statusCode = error.statusCode === 400 ? 400 : 500;
-    const mensagemErro =
-      statusCode === 400 ? error.message : "Erro interno ao criar carga";
+    console.error("ERRO CRIAR CARGA:", error);
 
-    return res.status(statusCode).json({
+    return res.status(error.statusCode || 500).json({
       success: false,
       dados: {},
-      erro: mensagemErro,
+      erro: error.message,
     });
   }
 }
