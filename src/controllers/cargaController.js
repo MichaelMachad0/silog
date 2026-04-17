@@ -4,7 +4,7 @@ async function criarCarga(req, res) {
   try {
     const carga = await cargaService.criarCarga(req.body);
     return res.status(201).json({
-      sucesso: true,
+      success: true,
       dados: carga,
       erro: null,
     });
@@ -14,7 +14,7 @@ async function criarCarga(req, res) {
       statusCode === 400 ? error.message : "Erro interno ao criar carga";
 
     return res.status(statusCode).json({
-      sucesso: false,
+      success: false,
       dados: {},
       erro: mensagemErro,
     });
@@ -25,7 +25,7 @@ async function listarCargas(req, res) {
   try {
     const cargas = await cargaService.listarCargas();
     return res.status(200).json({
-      sucesso: true,
+      success: true,
       dados: cargas,
       erro: null,
     });
@@ -35,7 +35,7 @@ async function listarCargas(req, res) {
       statusCode === 400 ? error.message : "Erro interno ao listar cargas";
 
     return res.status(statusCode).json({
-      sucesso: false,
+      success: false,
       dados: {},
       erro: mensagemErro,
     });
