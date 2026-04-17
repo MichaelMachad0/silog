@@ -9,10 +9,14 @@ async function criarCarga(req, res) {
       erro: null,
     });
   } catch (error) {
-    return res.status(error.statusCode || 500).json({
+    const statusCode = error.statusCode === 400 ? 400 : 500;
+    const mensagemErro =
+      statusCode === 400 ? error.message : "Erro interno ao criar carga";
+
+    return res.status(statusCode).json({
       sucesso: false,
       dados: {},
-      erro: error.message || "Erro interno ao criar carga",
+      erro: mensagemErro,
     });
   }
 }
@@ -26,10 +30,14 @@ async function listarCargas(req, res) {
       erro: null,
     });
   } catch (error) {
-    return res.status(error.statusCode || 500).json({
+    const statusCode = error.statusCode === 400 ? 400 : 500;
+    const mensagemErro =
+      statusCode === 400 ? error.message : "Erro interno ao listar cargas";
+
+    return res.status(statusCode).json({
       sucesso: false,
       dados: {},
-      erro: error.message || "Erro interno ao listar cargas",
+      erro: mensagemErro,
     });
   }
 }
