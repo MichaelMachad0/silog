@@ -28,14 +28,12 @@ async function listarCargas(req, res) {
       erro: null,
     });
   } catch (error) {
-    const statusCode = error.statusCode === 400 ? 400 : 500;
-    const mensagemErro =
-      statusCode === 400 ? error.message : "Erro interno ao listar cargas";
+    console.error("ERRO LISTAR CARGAS:", error);
 
-    return res.status(statusCode).json({
+    return res.status(error.statusCode || 500).json({
       success: false,
       dados: {},
-      erro: mensagemErro,
+      erro: error.message,
     });
   }
 }
