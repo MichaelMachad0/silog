@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: silog-postgres
+    environment:
+      POSTGRES_USER: silog
+      POSTGRES_PASSWORD: silog
+      POSTGRES_DB: silog
+    ports:
+      - "5432:5432"
+    volumes:
+      - silog_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U silog -d silog"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  silog_pgdata:
+

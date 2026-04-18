@@ -1,0 +1,12 @@
+{
+  "name": "silog",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "lint": "echo \"Lint será habilitado após instalar dependências\"",
+    "typecheck": "echo \"Typecheck será habilitado após instalar dependências\""
+  }
+}
+
