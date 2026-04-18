@@ -1,1 +1,15 @@
 node_modules
+backend/node_modules
+
+.env
+apps/**/.env
+backend/.env
+
+.next
+dist
+coverage
+
+prisma/dev.db
+**/prisma/dev.db
+
+/generated/prisma
