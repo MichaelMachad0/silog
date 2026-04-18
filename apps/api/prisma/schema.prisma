@@ -7,6 +7,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Intencionalmente vazio por enquanto.
-// O primeiro módulo adicionará seus models e enums aqui.
+model Motorista {
+  id             String    @id @default(cuid())
+  nome           String
+  cpf            String    @unique
+  telefone       String?
+  dataNascimento DateTime?
+  cnhNumero      String?
+  cnhCategoria   String?
+  cnhValidade    DateTime?
+  ear            Boolean   @default(false)
+  rntrc          String?
+  rntrcCategoria String?
+  status         String    @default("PENDENTE")
+  observacoes    String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
+  @@map("motoristas")
+}
