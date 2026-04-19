@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "silog",
   "version": "0.1.0",
   "private": true,
@@ -7,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push"
   },
   "dependencies": {
+    "@prisma/client": "6.19.3",
     "next": "16.2.2",
     "react": "19.2.4",
     "react-dom": "19.2.4"
@@ -21,24 +24,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "prisma": "6.19.3",
     "tailwindcss": "^4",
     "typescript": "^5"
-=======
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/app.js",
-  "scripts": {
-    "dev": "node src/app.js",
-    "start": "node src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "@prisma/client": "^6.19.3",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.1",
-    "express": "^5.2.1",
-    "prisma": "^6.19.3"
->>>>>>> cd4f22c (estrutura inicial backend SILOG)
   }
 }
