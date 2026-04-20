@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const cargasController = require("../controllers/cargaController");
+const cargaController = require("../controllers/cargaController");
 
-router.get("/", cargasController.listar);
-router.get("/teste-frete", cargasController.testeFrete);
-router.post("/", cargasController.criar);
-router.put("/:id/atribuir", cargasController.atribuirMotorista);
-router.put("/:id/status", cargasController.atualizarStatus);
+router.post("/", cargaController.criarCarga);
+router.get("/", cargaController.listarCargas);
 
 module.exports = router;
