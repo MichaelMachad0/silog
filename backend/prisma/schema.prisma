@@ -29,13 +29,14 @@ model Veiculo {
 }
 
 model Carga {
-  id         Int      @id @default(autoincrement())
-  origem     String
-  destino    String
-  peso       Float
-  valorFrete Float
-  status     String   @default("PENDENTE")
-  createdAt  DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  cliente     String
+  origem      String
+  destino     String
+  peso        Float
+  tipoVeiculo String?
+  status      String   @default("PENDENTE")
+  createdAt   DateTime @default(now())
 
   motoristaId Int?
   motorista   Motorista? @relation(fields: [motoristaId], references: [id])
@@ -50,15 +51,17 @@ model Frete {
   valorEmpresa   Float
   valorMotorista Float
   margem         Float
+  pedagio        Float?
+  custoExtra     Float?
 
   carga Carga @relation(fields: [cargaId], references: [id])
 }
 
 model Entrega {
-  id     Int    @id @default(autoincrement())
-  cidade String
-  estado String
-  peso   Float
+  id      Int    @id @default(autoincrement())
+  cidade  String
+  estado  String
+  peso    Float
 
   cargaId Int
   carga   Carga @relation(fields: [cargaId], references: [id])
@@ -71,4 +74,7 @@ model TabelaFrete {
   tipoVeiculo        String
   valorMotoristaBase Float
   pedagio            Float?
+  icmsPercentual     Float?
+  custoExtra         Float?
+  observacao         String?
 }
