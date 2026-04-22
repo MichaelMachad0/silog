@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚛 SILOG — Sistema Inteligente Logístico
 
-## Getting Started
+O SILOG é um ERP logístico desenvolvido para transformar operações baseadas em WhatsApp e planilhas em um sistema estruturado, automatizado e inteligente.
 
-First, run the development server:
+---
+
+## 🧠 Arquitetura do Sistema
+
+O sistema é dividido em 3 camadas principais:
+
+### 1. Núcleo Operacional
+
+* Gestão de Motoristas
+* Gestão de Veículos
+* Controle de Cargas
+* Gestão de Fretes
+
+### 2. Camada de Automação
+
+* Leitura automática de XML (NF-e)
+* Criação automática de cargas
+* Integração com TMS (Bsoft)
+* Automação de mensagens
+
+### 3. Camada de Inteligência Logística
+
+* Radar de motoristas disponíveis
+* Sugestão de fretes
+* Análise de rotas
+* Monitoramento operacional
+
+---
+
+## ⚙️ Stack Tecnológica
+
+* Frontend: Next.js
+* Backend: Node.js
+* Banco de Dados: PostgreSQL
+* ORM: Prisma
+* Estilização: Tailwind CSS
+
+---
+
+## 🚀 Como rodar o projeto
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Versão Atual
 
-## Learn More
+```text
+v0.1.0 — Base estrutural do sistema
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📊 Status do Projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🚧 Em desenvolvimento
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📌 Objetivo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Criar o sistema logístico mais eficiente e automatizado para transportadoras no Brasil.
+
+---
