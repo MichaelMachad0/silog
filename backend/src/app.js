@@ -20,7 +20,7 @@ app.use("/cargas", cargaRoutes);
 app.use("/clientes", clienteRoutes);
 app.use("/veiculos", veiculoRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
   console.log(`SILOG API rodando em http://localhost:${PORT}`);
