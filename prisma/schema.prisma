@@ -8,67 +8,63 @@ datasource db {
 }
 
 model Motorista {
-  id       Int     @id @default(autoincrement())
-  nome     String
-  cpf      String  @unique
-  telefone String?
-  rntrc    String?
-  status   String  @default("ATIVO")
+  id            String   @id @default(uuid())
+  nome          String
+  cpf           String   @unique
+  telefone      String?
+  cnh           String?
+  validadeCNH   DateTime?
+  status        String   @default("ATIVO")
 
-  veiculos Veiculo[]
-  cargas   Carga[]
+  veiculos      Veiculo[]
+  cargas        Carga[]
+
+  createdAt     DateTime @default(now())
 }
 
 model Veiculo {
-  id          Int       @id @default(autoincrement())
-  placa       String    @unique
-  tipo        String
-  carroceria  String
-  motoristaId Int
+  id        String   @id @default(uuid())
+  placa     String   @unique
+  tipo      String
+  marca     String?
+  modelo    String?
+  ano       Int?
+
+  motoristaId String
   motorista   Motorista @relation(fields: [motoristaId], references: [id])
+
+  cargas     Carga[]
+
+  createdAt  DateTime @default(now())
 }
 
 model Carga {
-  id         Int      @id @default(autoincrement())
-  origem     String
-  destino    String
-  peso       Float
-  valorFrete Float
-  status     String   @default("PENDENTE")
-  createdAt  DateTime @default(now())
+  id            String   @id @default(uuid())
+  origem        String
+  destino       String
+  peso          Float?
+  valorNota     Float?
 
-  motoristaId Int?
-  motorista   Motorista? @relation(fields: [motoristaId], references: [id])
+  motoristaId   String
+  motorista     Motorista @relation(fields: [motoristaId], references: [id])
 
-  frete    Frete?
-  entregas Entrega[]
+  veiculoId     String
+  veiculo       Veiculo @relation(fields: [veiculoId], references: [id])
+
+  frete         Frete?
+
+  createdAt     DateTime @default(now())
 }
 
 model Frete {
-  id             Int   @id @default(autoincrement())
-  cargaId        Int   @unique
-  valorEmpresa   Float
-  valorMotorista Float
-  margem         Float
+  id              String   @id @default(uuid())
+  valorEmpresa    Float
+  valorMotorista  Float
+  impostos        Float?
+  lucro           Float?
 
-  carga Carga @relation(fields: [cargaId], references: [id])
-}
+  cargaId         String   @unique
+  carga           Carga @relation(fields: [cargaId], references: [id])
 
-model Entrega {
-  id     Int    @id @default(autoincrement())
-  cidade String
-  estado String
-  peso   Float
-
-  cargaId Int
-  carga   Carga @relation(fields: [cargaId], references: [id])
-}
-
-model TabelaFrete {
-  id                 String @id @default(uuid())
-  origem             String
-  destino            String
-  tipoVeiculo        String
-  valorMotoristaBase Float
-  pedagio            Float?
+  createdAt       DateTime @default(now())
 }
