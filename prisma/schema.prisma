@@ -15,6 +15,13 @@ enum StatusCarga {
   CANCELADA
 }
 
+enum StatusMensagem {
+  PENDENTE
+  ENVIADA
+  FALHA
+  IGNORADA
+}
+
 model Motorista {
   id            String   @id @default(uuid())
   nome          String
@@ -64,6 +71,7 @@ model Carga {
 
   frete         Frete?
   eventos       CargaEvento[]
+  mensagens     MensagemLog[]
 
   createdAt     DateTime @default(now())
 }
@@ -76,6 +84,24 @@ model CargaEvento {
   statusNovo     StatusCarga
   observacao     String?
   createdAt      DateTime     @default(now())
+  mensagem       MensagemLog?
+
+  @@index([cargaId])
+}
+
+model MensagemLog {
+  id            String         @id @default(uuid())
+  cargaId       String
+  carga         Carga          @relation(fields: [cargaId], references: [id], onDelete: Cascade)
+  cargaEventoId String?        @unique
+  cargaEvento   CargaEvento?   @relation(fields: [cargaEventoId], references: [id], onDelete: SetNull)
+  telefone      String
+  conteudo      String
+  status        StatusMensagem @default(PENDENTE)
+  providerId    String?
+  erro          String?
+  createdAt     DateTime       @default(now())
+  enviadaEm     DateTime?
 
   @@index([cargaId])
 }
