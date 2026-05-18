@@ -7,6 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum StatusCarga {
+  CRIADA
+  LIBERADA
+  EM_TRANSITO
+  ENTREGUE
+  CANCELADA
+}
+
 model Motorista {
   id            String   @id @default(uuid())
   nome          String
@@ -39,11 +47,14 @@ model Veiculo {
 }
 
 model Carga {
-  id            String   @id @default(uuid())
+  id            String      @id @default(uuid())
   origem        String
   destino       String
   peso          Float?
   valorNota     Float?
+  status        StatusCarga @default(CRIADA)
+  rastreadoEm   DateTime?
+  entregueEm    DateTime?
 
   motoristaId   String
   motorista     Motorista @relation(fields: [motoristaId], references: [id])
@@ -52,8 +63,21 @@ model Carga {
   veiculo       Veiculo @relation(fields: [veiculoId], references: [id])
 
   frete         Frete?
+  eventos       CargaEvento[]
 
   createdAt     DateTime @default(now())
+}
+
+model CargaEvento {
+  id             String       @id @default(uuid())
+  cargaId        String
+  carga          Carga        @relation(fields: [cargaId], references: [id], onDelete: Cascade)
+  statusAnterior StatusCarga?
+  statusNovo     StatusCarga
+  observacao     String?
+  createdAt      DateTime     @default(now())
+
+  @@index([cargaId])
 }
 
 model Frete {

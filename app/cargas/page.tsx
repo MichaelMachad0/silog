@@ -1,3 +1,4 @@
+import { CargasPanel } from "@/components/cargas/CargasPanel";
 import { Topbar } from "@/components/layout/Topbar";
 import { SectionCard } from "@/components/dashboard/SectionCard";
 
@@ -6,17 +7,14 @@ export default function CargasPage() {
     <div style={styles.wrapper}>
       <Topbar
         titulo="Cargas"
-        subtitulo="Controle operacional de cargas e viagens"
+        subtitulo="Rastreamento operacional e histórico de eventos"
       />
 
       <SectionCard
-        titulo="Módulo de Cargas"
-        subtitulo="Estrutura inicial"
+        titulo="Painel de Cargas"
+        subtitulo="Fase 2 — rastreamento"
       >
-        <p style={styles.text}>
-          Aqui ficará o painel de cargas, origem, destino, cliente, peso,
-          motorista vinculado, status operacional e documentos fiscais.
-        </p>
+        <CargasPanel />
       </SectionCard>
     </div>
   );
