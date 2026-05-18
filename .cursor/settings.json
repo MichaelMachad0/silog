@@ -1,0 +1,13 @@
+{
+  "plugins": {
+    "slack": {
+      "enabled": true
+    },
+    "figma": {
+      "enabled": true
+    },
+    "twilio-developer-kit": {
+      "enabled": true
+    }
+  }
+}
