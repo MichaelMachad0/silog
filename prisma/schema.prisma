@@ -7,64 +7,214 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PerfilUsuario {
+  ADMIN
+  OPERADOR
+  MOTORISTA
+}
+
+enum StatusCarga {
+  CRIADA
+  LIBERADA
+  EM_TRANSITO
+  ENTREGUE
+  CANCELADA
+}
+
+enum StatusViagem {
+  PLANEJADA
+  EM_ANDAMENTO
+  CONCLUIDA
+  CANCELADA
+}
+
+enum StatusMensagem {
+  PENDENTE
+  ENVIADA
+  FALHA
+  IGNORADA
+}
+
+enum TipoEventoOperacional {
+  CARGA_CRIADA
+  MOTORISTA_VINCULADO
+  CARGA_LIBERADA
+  VIAGEM_INICIADA
+  CHEGADA_CLIENTE
+  VIAGEM_CONCLUIDA
+  CARGA_CANCELADA
+  STATUS_ALTERADO
+  MENSAGEM_ENVIADA
+  MENSAGEM_FALHA
+}
+
+model Usuario {
+  id          String        @id @default(uuid())
+  email       String        @unique
+  nome        String
+  senhaHash   String
+  perfil      PerfilUsuario @default(OPERADOR)
+  ativo       Boolean       @default(true)
+
+  motoristaId String?       @unique
+  motorista   Motorista?    @relation(fields: [motoristaId], references: [id])
+
+  eventos     EventoOperacional[]
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
 model Motorista {
-  id            String   @id @default(uuid())
-  nome          String
-  cpf           String   @unique
-  telefone      String?
-  cnh           String?
-  validadeCNH   DateTime?
-  status        String   @default("ATIVO")
+  id          String    @id @default(uuid())
+  nome        String
+  cpf         String    @unique
+  telefone    String?
+  cnh         String?
+  validadeCNH DateTime?
+  status      String    @default("ATIVO")
 
-  veiculos      Veiculo[]
-  cargas        Carga[]
+  usuario     Usuario?
+  veiculos    Veiculo[]
+  cargas      Carga[]
+  viagens     Viagem[]
 
-  createdAt     DateTime @default(now())
+  createdAt   DateTime  @default(now())
 }
 
 model Veiculo {
-  id        String   @id @default(uuid())
-  placa     String   @unique
-  tipo      String
-  marca     String?
-  modelo    String?
-  ano       Int?
+  id          String   @id @default(uuid())
+  placa       String   @unique
+  tipo        String
+  marca       String?
+  modelo      String?
+  ano         Int?
 
   motoristaId String
   motorista   Motorista @relation(fields: [motoristaId], references: [id])
 
-  cargas     Carga[]
+  cargas      Carga[]
+  viagens     Viagem[]
 
-  createdAt  DateTime @default(now())
+  createdAt   DateTime @default(now())
 }
 
 model Carga {
-  id            String   @id @default(uuid())
-  origem        String
-  destino       String
-  peso          Float?
-  valorNota     Float?
+  id          String      @id @default(uuid())
+  origem      String
+  destino     String
+  peso        Float?
+  valorNota   Float?
+  status      StatusCarga @default(CRIADA)
+  rastreadoEm DateTime?
+  entregueEm  DateTime?
 
-  motoristaId   String
-  motorista     Motorista @relation(fields: [motoristaId], references: [id])
+  motoristaId String
+  motorista   Motorista @relation(fields: [motoristaId], references: [id])
 
-  veiculoId     String
-  veiculo       Veiculo @relation(fields: [veiculoId], references: [id])
+  veiculoId   String
+  veiculo     Veiculo @relation(fields: [veiculoId], references: [id])
 
-  frete         Frete?
+  frete       Frete?
+  viagem      Viagem?
+  eventos     CargaEvento[]
+  eventosOps  EventoOperacional[]
+  mensagens   MensagemLog[]
 
-  createdAt     DateTime @default(now())
+  createdAt   DateTime @default(now())
+}
+
+model Viagem {
+  id          String       @id @default(uuid())
+  cargaId     String       @unique
+  carga       Carga        @relation(fields: [cargaId], references: [id], onDelete: Cascade)
+
+  motoristaId String
+  motorista   Motorista    @relation(fields: [motoristaId], references: [id])
+
+  veiculoId   String
+  veiculo     Veiculo      @relation(fields: [veiculoId], references: [id])
+
+  status      StatusViagem @default(PLANEJADA)
+  iniciadaEm  DateTime?
+  concluidaEm DateTime?
+
+  eventosOps  EventoOperacional[]
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([motoristaId])
+  @@index([status])
+}
+
+model EventoOperacional {
+  id          String                @id @default(uuid())
+  tipo        TipoEventoOperacional
+  titulo      String
+  descricao   String?
+
+  cargaId     String?
+  carga       Carga?                @relation(fields: [cargaId], references: [id], onDelete: Cascade)
+
+  viagemId    String?
+  viagem      Viagem?               @relation(fields: [viagemId], references: [id], onDelete: Cascade)
+
+  mensagemId  String?               @unique
+  mensagem    MensagemLog?          @relation(fields: [mensagemId], references: [id], onDelete: SetNull)
+
+  criadoPorId String?
+  criadoPor   Usuario?              @relation(fields: [criadoPorId], references: [id], onDelete: SetNull)
+
+  metadata    Json?
+  createdAt   DateTime              @default(now())
+
+  @@index([cargaId])
+  @@index([viagemId])
+  @@index([createdAt])
+}
+
+model CargaEvento {
+  id             String       @id @default(uuid())
+  cargaId        String
+  carga          Carga        @relation(fields: [cargaId], references: [id], onDelete: Cascade)
+  statusAnterior StatusCarga?
+  statusNovo     StatusCarga
+  observacao     String?
+  createdAt      DateTime     @default(now())
+  mensagem       MensagemLog?
+
+  @@index([cargaId])
+}
+
+model MensagemLog {
+  id            String         @id @default(uuid())
+  cargaId       String
+  carga         Carga          @relation(fields: [cargaId], references: [id], onDelete: Cascade)
+  cargaEventoId String?        @unique
+  cargaEvento   CargaEvento?   @relation(fields: [cargaEventoId], references: [id], onDelete: SetNull)
+  telefone      String
+  conteudo      String
+  status        StatusMensagem @default(PENDENTE)
+  providerId    String?
+  erro          String?
+  createdAt     DateTime       @default(now())
+  enviadaEm     DateTime?
+
+  eventoOp      EventoOperacional?
+
+  @@index([cargaId])
 }
 
 model Frete {
-  id              String   @id @default(uuid())
-  valorEmpresa    Float
-  valorMotorista  Float
-  impostos        Float?
-  lucro           Float?
+  id             String   @id @default(uuid())
+  valorEmpresa   Float
+  valorMotorista Float
+  impostos       Float?
+  lucro          Float?
 
-  cargaId         String   @unique
-  carga           Carga @relation(fields: [cargaId], references: [id])
+  cargaId        String   @unique
+  carga          Carga    @relation(fields: [cargaId], references: [id])
 
-  createdAt       DateTime @default(now())
+  createdAt      DateTime @default(now())
 }

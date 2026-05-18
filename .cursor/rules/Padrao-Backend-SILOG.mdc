@@ -1,0 +1,33 @@
+---
+description: 
+alwaysApply: true
+---
+
+Sempre seguir este padrão no projeto SILOG:
+
+- Separar backend em controllers, services e routes
+- Controllers devem apenas receber req/res e chamar o service
+- Services devem conter toda a regra de negócio
+- Prisma deve ser usado apenas nos services
+- Nunca colocar regra de negócio direto nas rotas
+- Sempre usar async/await
+- Sempre tratar erros com try/catch
+- Sempre retornar JSON padronizado
+- Manter nomes claros em português, como criarMotorista, listarMotoristas, criarCarga
+- Ao criar novos módulos, seguir a estrutura existente do projeto
+- Sempre validar dados antes de salvar no banco
+- Sempre retornar status HTTP correto (200, 201, 400, 500)
+- Nunca expor erro interno diretamente (usar mensagem controlada)
+- Padronizar resposta:
+  {
+    sucesso: true/false,
+    dados: {},
+    erro: null ou mensagem
+  }
+- Services não devem acessar req ou res diretamente
+- Controllers não devem acessar banco diretamente
+- Sempre separar lógica de cálculo (ex: frete) em funções isoladas dentro do service
+- Sempre nomear arquivos no padrão:
+  motoristaController.js
+  motoristaService.js
+  motoristaRoutes.js
