@@ -4,9 +4,10 @@ export async function GET() {
   return NextResponse.json([
     {
       id: "1",
-      nome: "João Silva",
-      cpf: "000.000.000-00",
-      telefone: "(71) 99999-9999",
+      descricao: "Carga exemplo",
+      origem: "Salvador",
+      destino: "Feira de Santana",
+      status: "pendente",
     },
   ]);
 }
@@ -16,7 +17,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json(
     {
-      message: "Motorista criado com sucesso",
+      message: "Carga criada com sucesso",
       data: body,
     },
     { status: 201 }

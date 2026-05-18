@@ -4,9 +4,9 @@ export async function GET() {
   return NextResponse.json([
     {
       id: "1",
-      nome: "João Silva",
-      cpf: "000.000.000-00",
-      telefone: "(71) 99999-9999",
+      placa: "ABC1D23",
+      modelo: "Volvo FH",
+      tipo: "cavalo",
     },
   ]);
 }
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json(
     {
-      message: "Motorista criado com sucesso",
+      message: "Veículo criado com sucesso",
       data: body,
     },
     { status: 201 }

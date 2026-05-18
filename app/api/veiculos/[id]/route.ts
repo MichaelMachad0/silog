@@ -6,7 +6,7 @@ export async function GET(request: Request, { params }: IdRouteParams) {
 
   return NextResponse.json({
     id,
-    message: "Motorista encontrado",
+    message: "Veículo encontrado",
   });
 }
 
@@ -17,7 +17,7 @@ export async function PUT(request: Request, { params }: IdRouteParams) {
   return NextResponse.json({
     id,
     ...body,
-    message: "Motorista atualizado",
+    message: "Veículo atualizado",
   });
 }
 
@@ -26,6 +26,6 @@ export async function DELETE(request: Request, { params }: IdRouteParams) {
 
   return NextResponse.json({
     id,
-    message: "Motorista removido",
+    message: "Veículo removido",
   });
 }
