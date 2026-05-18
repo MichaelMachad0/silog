@@ -5,3 +5,4 @@ backend/.env
 backend/dev.db
 backend/node_modules
 /generated/prisma
+.vercel
