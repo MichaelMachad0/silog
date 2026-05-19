@@ -6,6 +6,71 @@
 	},
 	"item": [
 		{
+			"name": "Motoristas",
+			"item": [],
+			"id": "c1c1a2a0-45ae-4ad4-9fcd-02e6b2c5762b"
+		},
+		{
+			"name": "Cargas",
+			"item": [
+				{
+					"name": "Listar Cargas",
+					"id": "b0916c7d-6513-468f-a54a-792fe47ef8f0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/api/cargas",
+						"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/cargas"
+					},
+					"response": []
+				}
+			],
+			"id": "7d7862e0-b822-4445-a7de-246b252d2229"
+		},
+		{
+			"name": "Veículos",
+			"item": [
+				{
+					"name": "Listar Veículos",
+					"id": "0f8e3159-76af-4845-9fc9-fded67541694",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/api/veiculos",
+						"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/veiculos"
+					},
+					"response": []
+				}
+			],
+			"id": "d5582f8a-6997-4e22-9e50-1d7baa068c15"
+		},
+		{
+			"name": "Fretes",
+			"item": [
+				{
+					"name": "Listar Fretes",
+					"id": "4080a124-0744-4bf7-a7d5-7aaa3aedcc13",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/api/fretes",
+						"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/fretes"
+					},
+					"response": []
+				}
+			],
+			"id": "dcef354d-a95a-4456-be37-e05b78346f4a"
+		},
+		{
 			"name": "New Request",
 			"id": "e3773ff0-9f6a-4640-bf8b-489f4ec7c33c",
 			"protocolProfileBehavior": {
@@ -14,6 +79,92 @@
 			"request": {
 				"method": "GET",
 				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Motoristas",
+			"id": "6085e43c-e381-4933-9f85-ad420e3c0952",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/api/motoristas",
+				"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/motoristas"
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Motorista",
+			"id": "5086dd28-5e1a-4a99-b0b1-5aba09014abd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "{{baseUrl}}/api/motoristas",
+				"description": "Generated from cURL: curl -X POST {{baseUrl}}/api/motoristas"
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Motorista",
+			"id": "2cc4ecab-9076-44b9-9468-0d17fb800d14",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/motoristas/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"motoristas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X PUT {{baseUrl}}/api/motoristas/:id"
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar Motorista",
+			"id": "dd44273a-efb8-4ce0-b95f-419dec084172",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/motoristas/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"motoristas",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/motoristas/:id"
 			},
 			"response": []
 		}
