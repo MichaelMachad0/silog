@@ -46,8 +46,13 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "17f669c8-d108-45f3-b830-ae8618a24b1f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
 								"packages": {},
-								"type": "text/javascript"
+								"requests": {}
 							}
 						}
 					],
@@ -66,7 +71,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"310b3d65-f390-4863-8d49-22e9675def0b\",\r\n  \"nome\": \"João Silva\",\r\n  \"cpf\": \"00000000000\",\r\n  \"telefone\": \"11999990000\",\r\n  \"cnh\": \"12345678900\",\r\n  \"validadeCNH\": null,\r\n  \"status\": \"ATIVO\",\r\n  \"createdAt\": \"2026-05-18T18:42:54.665Z\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -115,8 +120,13 @@
 						{
 							"listen": "prerequest",
 							"script": {
+								"id": "7d252a00-027f-4afe-8d19-8c268f4a6f20",
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
 								"packages": {},
-								"type": "text/javascript"
+								"requests": {}
 							}
 						}
 					],
@@ -134,7 +144,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"id\": \"310b3d65-f390-4863-8d49-22e9675def0b\",\n  \"nome\": \"João Silva\",\n  \"cpf\": \"00000000000\",\n  \"telefone\": \"11999990000\",\n  \"cnh\": \"12345678900\",\n  \"validadeCNH\": null,\n  \"status\": \"ATIVO\",\n  \"createdAt\": \"2026-05-18T18:42:54.665Z\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,7 +229,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"id\": \"310b3d65-f390-4863-8d49-22e9675def0b\",\n  \"nome\": \"João Silva\",\n  \"cpf\": \"00000000000\",\n  \"telefone\": \"11999990000\",\n  \"cnh\": \"12345678900\",\n  \"validadeCNH\": null,\n  \"status\": \"ATIVO\",\n  \"createdAt\": \"2026-05-18T18:42:54.665Z\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -285,7 +295,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"310b3d65-f390-4863-8d49-22e9675def0b\",\r\n  \"nome\": \"João Silva\",\r\n  \"cpf\": \"00000000000\",\r\n  \"telefone\": \"11999990000\",\r\n  \"cnh\": \"12345678900\",\r\n  \"validadeCNH\": null,\r\n  \"status\": \"ATIVO\",\r\n  \"createdAt\": \"2026-05-18T18:42:54.665Z\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
