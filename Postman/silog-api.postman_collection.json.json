@@ -59,7 +59,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"João Silva Teste 5\",\r\n  \"cpf\": \"11122237788\",\r\n  \"telefone\": \"71999999977\",\r\n  \"cnh\": \"12345678914\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"João Machado Teste 1\",\r\n  \"cpf\": \"1114725836923\",\r\n  \"telefone\": \"7199996666\",\r\n  \"cnh\": \"96325874123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -120,7 +120,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"nome\": \"João Silva Teste 5\",\n  \"cpf\": \"11122237788\",\n  \"telefone\": \"71999999977\",\n  \"cnh\": \"12345678914\"\n}",
+							"raw": "{\n  \"nome\": \"João Machado Teste 1\",\n  \"cpf\": \"1114725836923\",\n  \"telefone\": \"7199996666\",\n  \"cnh\": \"96325874123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
