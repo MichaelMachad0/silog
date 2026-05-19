@@ -78,12 +78,13 @@
 									"    const json = pm.response.json();",
 									"    pm.expect(json).to.have.property(\"id\");",
 									"    pm.collectionVariables.set(\"motorista_id\", json.id);",
+									"    pm.environment.set(\"motorista_id\", json.id);",
 									"});",
 									"",
 									"pm.test(\"Dados do motorista retornados corretamente\", function () {",
 									"    const json = pm.response.json();",
-									"    pm.expect(json.nome).to.eql(\"Carlos Freitas\");",
-									"    pm.expect(json.cpf).to.eql(\"12345678911\");",
+									"    pm.expect(json.nome).to.eql(\"João Silva Teste\");",
+									"    pm.expect(json.cpf).to.eql(\"98765432100\");",
 									"});",
 									"",
 									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
@@ -107,7 +108,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"nome\": \"Carlos Freitas\",\n  \"cpf\": \"12345678911\",\n  \"telefone\": \"71999999999\",\n  \"cnh\": \"1234567890\"\n}",
+							"raw": "{\n  \"nome\": \"João Silva Teste\",\n  \"cpf\": \"98765432100\",\n  \"telefone\": \"71999999999\",\n  \"cnh\": \"9876543210\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -125,13 +126,29 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bc63a055-a2f9-4081-b8da-97d597c93bc9",
-								"exec": [
-									""
-								],
 								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
+								"exec": [
+									"pm.test(\"Status 200 - Motorista atualizado\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Resposta contém ID do motorista\", function () {",
+									"    const json = pm.response.json();",
+									"    pm.expect(json).to.have.property(\"id\");",
+									"});",
+									"",
+									"pm.test(\"Dados atualizados corretamente\", function () {",
+									"    const json = pm.response.json();",
+									"    pm.expect(json.nome).to.eql(\"Carlos Freitas Atualizado\");",
+									"    pm.expect(json.cpf).to.eql(\"12345678911\");",
+									"    pm.expect(json.telefone).to.eql(\"71988888888\");",
+									"    pm.expect(json.cnh).to.eql(\"1234567890\");",
+									"});",
+									"",
+									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								]
 							}
 						},
 						{
