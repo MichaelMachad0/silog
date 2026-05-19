@@ -15,6 +15,19 @@
 			"item": [
 				{
 					"name": "Listar Cargas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					],
 					"id": "b0916c7d-6513-468f-a54a-792fe47ef8f0",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -35,6 +48,19 @@
 			"item": [
 				{
 					"name": "Listar Veículos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					],
 					"id": "0f8e3159-76af-4845-9fc9-fded67541694",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -55,6 +81,19 @@
 			"item": [
 				{
 					"name": "Listar Fretes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					],
 					"id": "4080a124-0744-4bf7-a7d5-7aaa3aedcc13",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -78,12 +117,26 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": ""
 			},
 			"response": []
 		},
 		{
 			"name": "Listar Motoristas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						]
+					}
+				}
+			],
 			"id": "6085e43c-e381-4933-9f85-ad420e3c0952",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -98,13 +151,40 @@
 		},
 		{
 			"name": "Criar Motorista",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status code is 201', function () {",
+							"    pm.response.to.have.status(201);",
+							"})"
+						]
+					}
+				}
+			],
 			"id": "5086dd28-5e1a-4a99-b0b1-5aba09014abd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nome\": \"João Silva\",\n  \"cpf\": \"123.456.789-00\",\n  \"telefone\": \"(11) 99999-0000\",\n  \"cnh\": \"12345678900\",\n  \"categoria_cnh\": \"E\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": "{{baseUrl}}/api/motoristas",
 				"description": "Generated from cURL: curl -X POST {{baseUrl}}/api/motoristas"
 			},
@@ -112,13 +192,40 @@
 		},
 		{
 			"name": "Atualizar Motorista",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						]
+					}
+				}
+			],
 			"id": "2cc4ecab-9076-44b9-9468-0d17fb800d14",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nome\": \"João Silva\",\n  \"cpf\": \"123.456.789-00\",\n  \"telefone\": \"(11) 98888-1111\",\n  \"cnh\": \"12345678900\",\n  \"categoria_cnh\": \"E\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "{{baseUrl}}/api/motoristas/:id",
 					"host": [
@@ -141,6 +248,19 @@
 		},
 		{
 			"name": "Deletar Motorista",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						]
+					}
+				}
+			],
 			"id": "dd44273a-efb8-4ce0-b95f-419dec084172",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
