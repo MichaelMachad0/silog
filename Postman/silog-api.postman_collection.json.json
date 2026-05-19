@@ -9,21 +9,28 @@
 			"name": "Motoristas",
 			"item": [
 				{
-					"name": "Deletar Motorista",
+					"name": "Listar Motoristas",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "9df12617-80c6-4db9-93f4-339cb1ff2235",
+								"id": "578cd570-67dc-4ed3-a21d-13276c6c393d",
 								"exec": [
-									"pm.test(\"Status 200 ou 204 - Motorista deletado\", function () {",
-									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+									"pm.test(\"Status 200 - Lista retornada com sucesso\", function () {",
+									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"pm.test(\"Motorista removido com sucesso\", function () {",
-									"    if (pm.response.code === 200) {",
-									"        const json = pm.response.json();",
-									"        pm.expect(json).to.exist;",
+									"pm.test(\"Resposta é um array\", function () {",
+									"    const json = pm.response.json();",
+									"    pm.expect(json).to.be.an(\"array\");",
+									"});",
+									"",
+									"pm.test(\"Motoristas possuem campos obrigatórios\", function () {",
+									"    const json = pm.response.json();",
+									"    if (json.length > 0) {",
+									"        pm.expect(json[0]).to.have.property(\"id\");",
+									"        pm.expect(json[0]).to.have.property(\"nome\");",
+									"        pm.expect(json[0]).to.have.property(\"cpf\");",
 									"    }",
 									"});",
 									"",
@@ -37,15 +44,78 @@
 							}
 						}
 					],
-					"id": "dd44273a-efb8-4ce0-b95f-419dec084172",
+					"id": "6085e43c-e381-4933-9f85-ad420e3c0952",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": "{{baseUrl}}/api/motoristas/{{motorista_id}}",
-						"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/motoristas/:id"
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "authjs.session-token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwia2lkIjoiRTRpTWloVnFJLUdpUDVyaFNxdEJwRk1tRVdrTkhrVXNVLWZxZzFCQlNaY3pzWk10VVZfUTdVazRmOHRWNl8wVFRrSWZHYWgtei1peTVZUVhPZHBZUGcifQ..T1slru8jPs_t7qf92bgT_g._zKu-Ru3lIk00x36H-lSc3qmystOM0WOpde1nAl8wd-7SyPAWZoSn-BcbF11wHV9dLrUBjZQPdbo01alBZDWtED6ySnBdRplCz_SYtbp86NJgzkcHrZcIOS1ex3Xkh5ikSH8bz93mql-EkDd2c0WXRM5-GX5CIWGuGDzDxdV5C2m_Gf22W8zALO4ue6gnImLQRTrXZrHUEmEJoGSb8gxHeRLXToQICovLVrKpC3aZ1oqee7cwsFPcphYvfOYNvNE9cVIW14hOX9dx7x1s_iPYLdsdIgr_AOold_lp5MT3zrdxThI3n0VssxoOIl24wBH.GmouOSPAtaMAzSMMecPz4NCa2z-UQ9U4PJxofw_Yqz0",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/motoristas",
+						"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/motoristas"
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Motorista",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status 201 - Motorista criado\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Resposta contém ID do motorista\", function () {",
+									"    const json = pm.response.json();",
+									"    pm.expect(json).to.have.property(\"id\");",
+									"    pm.collectionVariables.set(\"motorista_id\", json.id);",
+									"});",
+									"",
+									"pm.test(\"Dados do motorista retornados corretamente\", function () {",
+									"    const json = pm.response.json();",
+									"    pm.expect(json.nome).to.eql(\"Carlos Freitas\");",
+									"    pm.expect(json.cpf).to.eql(\"12345678911\");",
+									"});",
+									"",
+									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});"
+								]
+							}
+						}
+					],
+					"id": "5086dd28-5e1a-4a99-b0b1-5aba09014abd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Carlos Freitas\",\n  \"cpf\": \"12345678911\",\n  \"telefone\": \"71999999999\",\n  \"cnh\": \"1234567890\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/motoristas",
+						"description": "Generated from cURL: curl -X POST {{baseUrl}}/api/motoristas"
 					},
 					"response": []
 				},
@@ -109,104 +179,43 @@
 					"response": []
 				},
 				{
-					"name": "Criar Motorista",
+					"name": "Deletar Motorista",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "9df12617-80c6-4db9-93f4-339cb1ff2235",
 								"exec": [
-									"pm.test(\"Status 201 - Motorista criado\", function () {",
-									"    pm.response.to.have.status(201);",
+									"pm.test(\"Status 200 ou 204 - Motorista deletado\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
 									"});",
 									"",
-									"pm.test(\"Resposta contém ID do motorista\", function () {",
-									"    const json = pm.response.json();",
-									"    pm.expect(json).to.have.property(\"id\");",
-									"    pm.collectionVariables.set(\"motorista_id\", json.id);",
-									"});",
-									"",
-									"pm.test(\"Dados do motorista retornados corretamente\", function () {",
-									"    const json = pm.response.json();",
-									"    pm.expect(json.nome).to.eql(\"Carlos Freitas\");",
-									"    pm.expect(json.cpf).to.eql(\"12345678911\");",
-									"});",
-									"",
-									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
-									"});"
-								]
-							}
-						}
-					],
-					"id": "5086dd28-5e1a-4a99-b0b1-5aba09014abd",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"nome\": \"Carlos Freitas\",\n  \"cpf\": \"12345678911\",\n  \"telefone\": \"71999999999\",\n  \"cnh\": \"1234567890\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{baseUrl}}/api/motoristas",
-						"description": "Generated from cURL: curl -X POST {{baseUrl}}/api/motoristas"
-					},
-					"response": []
-				},
-				{
-					"name": "Listar Motoristas",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"pm.test(\"Status 200 - Lista retornada com sucesso\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"Resposta é um array\", function () {",
-									"    const json = pm.response.json();",
-									"    pm.expect(json).to.be.an(\"array\");",
-									"});",
-									"",
-									"pm.test(\"Motoristas possuem campos obrigatórios\", function () {",
-									"    const json = pm.response.json();",
-									"    if (json.length > 0) {",
-									"        pm.expect(json[0]).to.have.property(\"id\");",
-									"        pm.expect(json[0]).to.have.property(\"nome\");",
-									"        pm.expect(json[0]).to.have.property(\"cpf\");",
+									"pm.test(\"Motorista removido com sucesso\", function () {",
+									"    if (pm.response.code === 200) {",
+									"        const json = pm.response.json();",
+									"        pm.expect(json).to.exist;",
 									"    }",
 									"});",
 									"",
 									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
-					"id": "6085e43c-e381-4933-9f85-ad420e3c0952",
+					"id": "dd44273a-efb8-4ce0-b95f-419dec084172",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
-						"url": "{{baseUrl}}/api/motoristas",
-						"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/motoristas"
+						"url": "{{baseUrl}}/api/motoristas/{{motorista_id}}",
+						"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/motoristas/:id"
 					},
 					"response": []
 				}
