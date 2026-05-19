@@ -57,6 +57,15 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"João Silva Teste 2\",\r\n  \"cpf\": \"98765432101\",\r\n  \"telefone\": \"71999999999\",\r\n  \"cnh\": \"12345678901\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{baseUrl}}/api/motoristas",
 						"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/motoristas"
 					},
@@ -129,19 +138,31 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "6402b713-0c02-452f-9fb4-7592e5e7141f",
 								"exec": [
 									"pm.test(\"Status 200 - Motorista atualizado\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
 									"pm.test(\"Resposta contém ID do motorista\", function () {",
-									"    const json = pm.response.json();",
+									"    let json;",
+									"    try {",
+									"        json = pm.response.json();",
+									"    } catch (e) {",
+									"        pm.expect.fail(\"Resposta não é um JSON válido: \" + e.message);",
+									"        return;",
+									"    }",
 									"    pm.expect(json).to.have.property(\"id\");",
 									"});",
 									"",
 									"pm.test(\"Dados atualizados corretamente\", function () {",
-									"    const json = pm.response.json();",
+									"    let json;",
+									"    try {",
+									"        json = pm.response.json();",
+									"    } catch (e) {",
+									"        pm.expect.fail(\"Resposta não é um JSON válido: \" + e.message);",
+									"        return;",
+									"    }",
 									"    pm.expect(json.nome).to.eql(\"Carlos Freitas Atualizado\");",
 									"    pm.expect(json.cpf).to.eql(\"12345678911\");",
 									"    pm.expect(json.telefone).to.eql(\"71988888888\");",
@@ -151,7 +172,10 @@
 									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						},
 						{
@@ -181,7 +205,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"nome\": \"Carlos Freitas Atualizado\",\n  \"cpf\": \"12345678911\",\n  \"telefone\": \"71988888888\",\n  \"cnh\": \"1234567890\"\n}",
+							"raw": "{\n  \"nome\": \"João Silva Teste 2\",\n  \"cpf\": \"98765432101\",\n  \"telefone\": \"71999999999\",\n  \"cnh\": \"12345678901\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -245,6 +269,15 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"João Silva Teste 2\",\r\n  \"cpf\": \"98765432101\",\r\n  \"telefone\": \"71999999999\",\r\n  \"cnh\": \"12345678901\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{baseUrl}}/api/motoristas/{{motorista_id}}",
 						"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/motoristas/:id"
 					},
