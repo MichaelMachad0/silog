@@ -290,12 +290,15 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "fd198c02-a417-4d99-8e00-e2f6a505dedf",
 								"exec": [
 									"pm.test('Status code is 200', function () {",
 									"    pm.response.to.have.status(200);",
 									"})"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -320,22 +323,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseUrl}}/api/cargas/:id",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"cargas",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						},
+						"url": "{{baseUrl}}/api/cargas/{{cargas_id}}",
 						"description": "Generated from cURL: curl -X PUT {{baseUrl}}/api/cargas/:id -H \"Content-Type: application/json\" -d '{\"descricao\": \"Carga de eletrônicos atualizada\", \"peso_kg\": 480, \"volume_m3\": 2.3, \"origem\": \"São Paulo\", \"destino\": \"Rio de Janeiro\"}'"
 					},
 					"response": []
@@ -450,12 +438,15 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "9fb19ea9-0847-4be8-8e13-0d63578eee63",
 								"exec": [
 									"pm.test('Status code is 200', function () {",
 									"    pm.response.to.have.status(200);",
 									"})"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -480,22 +471,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseUrl}}/api/veiculos/:id",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"veiculos",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						},
+						"url": "{{baseUrl}}/api/veiculos/{{veiculos_id}}",
 						"description": "Generated from cURL: curl -X PUT {{baseUrl}}/api/veiculos/:id -H \"Content-Type: application/json\" -d '{\"placa\": \"ABC-1234\", \"modelo\": \"Volvo FH\", \"ano\": 2022, \"capacidade_kg\": 22000, \"tipo\": \"caminhão\"}'"
 					},
 					"response": []
@@ -506,12 +482,15 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "6f34e74c-9863-4210-984d-e536571d847b",
 								"exec": [
 									"pm.test('Status code is 200', function () {",
 									"    pm.response.to.have.status(200);",
 									"})"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -522,22 +501,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/veiculos/:id",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"veiculos",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						},
+						"url": "{{baseUrl}}/api/veiculos/{{veiculos_id}}",
 						"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/veiculos/:id"
 					},
 					"response": []
@@ -622,12 +586,15 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "07ce6d03-e1f4-4f76-8de8-67ce37530e88",
 								"exec": [
 									"pm.test('Status code is 200', function () {",
 									"    pm.response.to.have.status(200);",
 									"})"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -652,22 +619,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseUrl}}/api/fretes/:id",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"fretes",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						},
+						"url": "{{baseUrl}}/api/fretes/{{fretes_id}}",
 						"description": "Generated from cURL: curl -X PUT {{baseUrl}}/api/fretes/:id -H \"Content-Type: application/json\" -d '{\"motorista_id\": 1, \"veiculo_id\": 1, \"carga_id\": 1, \"data_saida\": \"2026-05-20\", \"data_entrega_prevista\": \"2026-05-23\", \"valor\": 3800.00}'"
 					},
 					"response": []
@@ -678,12 +630,15 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "2282193e-4ef7-4f11-ab37-5367fcd65671",
 								"exec": [
 									"pm.test('Status code is 200', function () {",
 									"    pm.response.to.have.status(200);",
 									"})"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -694,22 +649,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/fretes/:id",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"fretes",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						},
+						"url": "{{baseUrl}}/api/fretes/{{fretes_id}}",
 						"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/fretes/:id"
 					},
 					"response": []
