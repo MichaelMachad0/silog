@@ -205,7 +205,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"nome\": \"João Silva Teste 5\",\n  \"cpf\": \"11122237788\",\n  \"telefone\": \"71999999977\",\n  \"cnh\": \"12345678914\"\n}",
+							"raw": "\"id\": \"310b3d65-f390-4863-8d49-22e9675def0b\",\n            \"nome\": \"João Silva\",\n            \"cpf\": \"00000000000\",\n            \"telefone\": \"11999990000\",\n            \"cnh\": \"12345678900\",\n            \"validadeCNH\": null,\n            \"status\": \"ATIVO\",\n            \"createdAt\": \"2026-05-18T18:42:54.665Z\"\n        }",
 							"options": {
 								"raw": {
 									"language": "json"
