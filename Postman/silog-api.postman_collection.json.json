@@ -42,6 +42,13 @@
 								"packages": {},
 								"requests": {}
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
 						}
 					],
 					"id": "6085e43c-e381-4933-9f85-ad420e3c0952",
@@ -59,7 +66,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"João Machado Teste 1\",\r\n  \"cpf\": \"1114725836923\",\r\n  \"telefone\": \"7199996666\",\r\n  \"cnh\": \"96325874123\"\r\n}",
+							"raw": "{\r\n  \"id\": \"310b3d65-f390-4863-8d49-22e9675def0b\",\r\n  \"nome\": \"João Silva\",\r\n  \"cpf\": \"00000000000\",\r\n  \"telefone\": \"11999990000\",\r\n  \"cnh\": \"12345678900\",\r\n  \"validadeCNH\": null,\r\n  \"status\": \"ATIVO\",\r\n  \"createdAt\": \"2026-05-18T18:42:54.665Z\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -104,6 +111,13 @@
 								"packages": {},
 								"requests": {}
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
 						}
 					],
 					"id": "5086dd28-5e1a-4a99-b0b1-5aba09014abd",
@@ -120,7 +134,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"nome\": \"João Machado Teste 1\",\n  \"cpf\": \"1114725836923\",\n  \"telefone\": \"7199996666\",\n  \"cnh\": \"96325874123\"\n}",
+							"raw": "{\n  \"id\": \"310b3d65-f390-4863-8d49-22e9675def0b\",\n  \"nome\": \"João Silva\",\n  \"cpf\": \"00000000000\",\n  \"telefone\": \"11999990000\",\n  \"cnh\": \"12345678900\",\n  \"validadeCNH\": null,\n  \"status\": \"ATIVO\",\n  \"createdAt\": \"2026-05-18T18:42:54.665Z\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -205,7 +219,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\"id\": \"310b3d65-f390-4863-8d49-22e9675def0b\",\n            \"nome\": \"João Silva\",\n            \"cpf\": \"00000000000\",\n            \"telefone\": \"11999990000\",\n            \"cnh\": \"12345678900\",\n            \"validadeCNH\": null,\n            \"status\": \"ATIVO\",\n            \"createdAt\": \"2026-05-18T18:42:54.665Z\"\n        }",
+							"raw": "{\n  \"id\": \"310b3d65-f390-4863-8d49-22e9675def0b\",\n  \"nome\": \"João Silva\",\n  \"cpf\": \"00000000000\",\n  \"telefone\": \"11999990000\",\n  \"cnh\": \"12345678900\",\n  \"validadeCNH\": null,\n  \"status\": \"ATIVO\",\n  \"createdAt\": \"2026-05-18T18:42:54.665Z\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
