@@ -127,11 +127,7 @@
 							"script": {
 								"id": "bc63a055-a2f9-4081-b8da-97d597c93bc9",
 								"exec": [
-									"const json = pm.response.json();",
-									"",
-									"pm.environment.set(\"motorista_id\", json.dados.id);",
-									"",
-									"console.log(\"motorista_id salvo:\", json.dados.id);"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {},
