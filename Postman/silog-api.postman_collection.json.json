@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "9df12617-80c6-4db9-93f4-339cb1ff2235",
 								"exec": [
 									"pm.test(\"Status 200 ou 204 - Motorista deletado\", function () {",
 									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
@@ -30,7 +30,10 @@
 									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -41,22 +44,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/motoristas/:id",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"motoristas",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						},
+						"url": "{{baseUrl}}/api/motoristas/{{motorista_id}}",
 						"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/motoristas/:id"
 					},
 					"response": []
@@ -67,7 +55,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "bc63a055-a2f9-4081-b8da-97d597c93bc9",
 								"exec": [
 									"pm.test(\"Status 200 - Motorista atualizado\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -87,7 +75,10 @@
 									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -112,22 +103,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseUrl}}/api/motoristas/:id",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"motoristas",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						},
+						"url": "{{baseUrl}}/api/motoristas/{{motorista_id}}",
 						"description": "Generated from cURL: curl -X PUT {{baseUrl}}/api/motoristas/:id"
 					},
 					"response": []
@@ -762,7 +738,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": ""
+				"url": "http://localhost:3000"
 			},
 			"response": []
 		}
