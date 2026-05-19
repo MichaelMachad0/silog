@@ -196,7 +196,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9df12617-80c6-4db9-93f4-339cb1ff2235",
+								"id": "0c6d5333-237d-44b6-b485-ddba245596e7",
 								"exec": [
 									"pm.test(\"Status 200 ou 204 - Motorista deletado\", function () {",
 									"    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
@@ -212,6 +212,22 @@
 									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
 									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"id": "ec42e444-fd35-4ac6-aa68-62be49bc74f7",
+							"listen": "prerequest",
+							"script": {
+								"id": "2f011909-f89e-42fb-ab74-8f2e6eadac6f",
+								"exec": [
+									"const motoristaId = pm.environment.get(\"motorista_id\") || pm.collectionVariables.get(\"motorista_id\");",
+									"if (!motoristaId) {",
+									"    console.warn(\"ATENÇÃO: motorista_id está vazio! Execute 'Criar Motorista' antes deste request.\");",
+									"}"
 								],
 								"type": "text/javascript",
 								"packages": {},
