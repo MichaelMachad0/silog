@@ -34,8 +34,8 @@ export async function DELETE(_request: Request, { params }: IdRouteParams) {
   try {
     await requireOperador();
     const { id } = await params;
-    const dados = await excluirMotorista(id);
-    return jsonSucesso(dados);
+    await excluirMotorista(id);
+    return jsonSucesso({ mensagem: "Motorista excluído com sucesso" });
   } catch (erro) {
     return jsonErro(erro);
   }
