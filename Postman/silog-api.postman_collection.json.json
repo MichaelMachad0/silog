@@ -68,7 +68,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
+								"id": "383d8bbe-64d9-467b-a078-4b664505a1bb",
 								"exec": [
 									"pm.test(\"Status 201 - Motorista criado\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -90,7 +90,10 @@
 									"pm.test(\"Tempo de resposta menor que 2000ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
 									"});"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -108,7 +111,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"nome\": \"João Silva Teste\",\n  \"cpf\": \"98765432100\",\n  \"telefone\": \"71999999999\",\n  \"cnh\": \"9876543210\"\n}",
+							"raw": "{\n  \"nome\": \"João Silva Teste 2\",\n  \"cpf\": \"98765432101\",\n  \"telefone\": \"71999999999\",\n  \"cnh\": \"12345678901\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
