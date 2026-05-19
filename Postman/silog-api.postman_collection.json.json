@@ -39,6 +39,145 @@
 						"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/cargas"
 					},
 					"response": []
+				},
+				{
+					"name": "Criar Carga",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 201', function () {",
+									"    pm.response.to.have.status(201);",
+									"})"
+								]
+							}
+						}
+					],
+					"id": "45c905c3-8654-44a9-a21e-eb02e2bcd553",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"descricao\": \"Carga de eletrônicos\", \"peso_kg\": 500, \"volume_m3\": 2.5, \"origem\": \"São Paulo\", \"destino\": \"Rio de Janeiro\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/cargas",
+						"description": "Generated from cURL: curl -X POST {{baseUrl}}/api/cargas -H \"Content-Type: application/json\" -d '{\"descricao\": \"Carga de eletrônicos\", \"peso_kg\": 500, \"volume_m3\": 2.5, \"origem\": \"São Paulo\", \"destino\": \"Rio de Janeiro\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Carga",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					],
+					"id": "ac120ac4-e8ae-416a-bd8f-5190d19fba1e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"descricao\": \"Carga de eletrônicos atualizada\", \"peso_kg\": 480, \"volume_m3\": 2.3, \"origem\": \"São Paulo\", \"destino\": \"Rio de Janeiro\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/cargas/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cargas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X PUT {{baseUrl}}/api/cargas/:id -H \"Content-Type: application/json\" -d '{\"descricao\": \"Carga de eletrônicos atualizada\", \"peso_kg\": 480, \"volume_m3\": 2.3, \"origem\": \"São Paulo\", \"destino\": \"Rio de Janeiro\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Carga",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					],
+					"id": "1c8354ee-9510-4af0-8cf5-723e8ed2deb1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/cargas/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"cargas",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/cargas/:id"
+					},
+					"response": []
 				}
 			],
 			"id": "7d7862e0-b822-4445-a7de-246b252d2229"
@@ -72,6 +211,145 @@
 						"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/veiculos"
 					},
 					"response": []
+				},
+				{
+					"name": "Criar Veículo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 201', function () {",
+									"    pm.response.to.have.status(201);",
+									"})"
+								]
+							}
+						}
+					],
+					"id": "e34f21ce-6128-4583-b578-581f3b054e9b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"placa\": \"ABC-1234\", \"modelo\": \"Volvo FH\", \"ano\": 2022, \"capacidade_kg\": 20000, \"tipo\": \"caminhão\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/veiculos",
+						"description": "Generated from cURL: curl -X POST {{baseUrl}}/api/veiculos -H \"Content-Type: application/json\" -d '{\"placa\": \"ABC-1234\", \"modelo\": \"Volvo FH\", \"ano\": 2022, \"capacidade_kg\": 20000, \"tipo\": \"caminhão\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Veículo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					],
+					"id": "0b697a83-16df-4d24-b26f-5005729d6c92",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"placa\": \"ABC-1234\", \"modelo\": \"Volvo FH\", \"ano\": 2022, \"capacidade_kg\": 22000, \"tipo\": \"caminhão\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/veiculos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"veiculos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X PUT {{baseUrl}}/api/veiculos/:id -H \"Content-Type: application/json\" -d '{\"placa\": \"ABC-1234\", \"modelo\": \"Volvo FH\", \"ano\": 2022, \"capacidade_kg\": 22000, \"tipo\": \"caminhão\"}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Veículo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					],
+					"id": "6135a0f1-8944-4d03-94ce-1a2eb2e22498",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/veiculos/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"veiculos",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/veiculos/:id"
+					},
+					"response": []
 				}
 			],
 			"id": "d5582f8a-6997-4e22-9e50-1d7baa068c15"
@@ -103,6 +381,145 @@
 						"header": [],
 						"url": "{{baseUrl}}/api/fretes",
 						"description": "Generated from cURL: curl -X GET {{baseUrl}}/api/fretes"
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Frete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 201', function () {",
+									"    pm.response.to.have.status(201);",
+									"})"
+								]
+							}
+						}
+					],
+					"id": "a3e61c9a-d138-4414-aaa5-dc0ca8497f68",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"motorista_id\": 1, \"veiculo_id\": 1, \"carga_id\": 1, \"data_saida\": \"2026-05-20\", \"data_entrega_prevista\": \"2026-05-22\", \"valor\": 3500.00}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/api/fretes",
+						"description": "Generated from cURL: curl -X POST {{baseUrl}}/api/fretes -H \"Content-Type: application/json\" -d '{\"motorista_id\": 1, \"veiculo_id\": 1, \"carga_id\": 1, \"data_saida\": \"2026-05-20\", \"data_entrega_prevista\": \"2026-05-22\", \"valor\": 3500.00}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Frete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					],
+					"id": "f58e07ae-6027-481f-8506-a1b3b271d8d8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"motorista_id\": 1, \"veiculo_id\": 1, \"carga_id\": 1, \"data_saida\": \"2026-05-20\", \"data_entrega_prevista\": \"2026-05-23\", \"valor\": 3800.00}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/fretes/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"fretes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X PUT {{baseUrl}}/api/fretes/:id -H \"Content-Type: application/json\" -d '{\"motorista_id\": 1, \"veiculo_id\": 1, \"carga_id\": 1, \"data_saida\": \"2026-05-20\", \"data_entrega_prevista\": \"2026-05-23\", \"valor\": 3800.00}'"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Frete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"})"
+								]
+							}
+						}
+					],
+					"id": "6cd30d90-53a1-4734-a164-1023003cee45",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/fretes/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"fretes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl -X DELETE {{baseUrl}}/api/fretes/:id"
 					},
 					"response": []
 				}
