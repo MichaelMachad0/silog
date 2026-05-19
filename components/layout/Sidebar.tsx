@@ -2,17 +2,32 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import type { PerfilUsuario } from "@prisma/client";
+import { LogoutButton } from "@/components/auth/LogoutButton";
 
 type MenuItem = {
   label: string;
   href: string;
 };
 
-type SidebarProps = {
-  menu: MenuItem[];
+type UsuarioSessao = {
+  nome: string;
+  email: string;
+  perfil: PerfilUsuario;
 };
 
-export function Sidebar({ menu }: SidebarProps) {
+type SidebarProps = {
+  menu: MenuItem[];
+  usuario?: UsuarioSessao;
+};
+
+const perfilLabel: Record<PerfilUsuario, string> = {
+  ADMIN: "Administrador",
+  OPERADOR: "Operador",
+  MOTORISTA: "Motorista",
+};
+
+export function Sidebar({ menu, usuario }: SidebarProps) {
   const pathname = usePathname();
 
   return (
@@ -47,13 +62,22 @@ export function Sidebar({ menu }: SidebarProps) {
       </div>
 
       <div style={styles.sidebarFooter}>
-        <div style={styles.statusCard}>
-          <span style={styles.statusLabel}>Status do Sistema</span>
-          <strong style={styles.statusValue}>Online</strong>
-          <p style={styles.statusText}>
-            Layout persistente ativo e navegação pronta para módulos.
-          </p>
-        </div>
+        {usuario ? (
+          <div style={styles.userCard}>
+            <span style={styles.statusLabel}>Usuário logado</span>
+            <strong style={styles.userName}>{usuario.nome}</strong>
+            <p style={styles.userMeta}>{usuario.email}</p>
+            <span style={styles.userPerfil}>
+              {perfilLabel[usuario.perfil]}
+            </span>
+            <LogoutButton />
+          </div>
+        ) : (
+          <div style={styles.statusCard}>
+            <span style={styles.statusLabel}>Status do Sistema</span>
+            <strong style={styles.statusValue}>Online</strong>
+          </div>
+        )}
       </div>
     </aside>
   );
@@ -147,10 +171,33 @@ const styles: { [key: string]: React.CSSProperties } = {
     color: "#22c55e",
     marginBottom: "8px",
   },
-  statusText: {
-    margin: 0,
-    color: "#cbd5e1",
-    fontSize: "13px",
-    lineHeight: 1.5,
+  userCard: {
+    background: "rgba(255,255,255,0.04)",
+    border: "1px solid rgba(148,163,184,0.15)",
+    borderRadius: "18px",
+    padding: "16px",
+  },
+  userName: {
+    display: "block",
+    fontSize: "16px",
+    color: "#f8fafc",
+    marginBottom: "4px",
+  },
+  userMeta: {
+    margin: "0 0 8px",
+    color: "#94a3b8",
+    fontSize: "12px",
+    wordBreak: "break-all",
+  },
+  userPerfil: {
+    display: "inline-block",
+    fontSize: "11px",
+    fontWeight: 700,
+    color: "#93c5fd",
+    background: "rgba(37,99,235,0.15)",
+    border: "1px solid rgba(59,130,246,0.25)",
+    borderRadius: "999px",
+    padding: "4px 10px",
+    marginBottom: "4px",
   },
 };
