@@ -729,19 +729,6 @@
 				}
 			],
 			"id": "dcef354d-a95a-4456-be37-e05b78346f4a"
-		},
-		{
-			"name": "New Request",
-			"id": "e3773ff0-9f6a-4640-bf8b-489f4ec7c33c",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:3000"
-			},
-			"response": []
 		}
 	]
 }
